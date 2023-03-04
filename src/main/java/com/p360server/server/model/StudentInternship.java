@@ -5,15 +5,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 @Entity
-public class Internship {
+public class StudentInternship {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String internship_name;
     private String inernship_description;
-    private String link;
+    private Number student_rollno;
+    private Number internship_score;
 
     public Long getId() {
         return id;
@@ -39,11 +40,19 @@ public class Internship {
         this.inernship_description = inernship_description;
     }
 
-    public String getLink() {
-        return link;
+    public Number getStudent_rollno() {
+        return student_rollno;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setStudent_rollno(Number student_rollno) {
+        this.student_rollno = student_rollno;
+    }
+
+    public Number getInternship_score() {
+        return internship_score;
+    }
+
+    public void setInternship_score(Number internship_score) {
+        this.internship_score = internship_score;
     }
 }

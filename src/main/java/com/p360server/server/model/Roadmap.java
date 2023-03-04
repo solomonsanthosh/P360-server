@@ -1,27 +1,21 @@
 package com.p360server.server.model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.UUID;
 
 @Entity
 public class Roadmap {
-
-
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String roadmap_topic;
-    private String roadmap_subtopic;
-    private String roadmap_description;
-    private String roadmap_youtube;
+    private String topic;
+    private  String sub_topic;
 
-
-    public String getRoadmap_topic() {
-        return roadmap_topic;
-    }
+    private String description;
+    private String links;
 
     public Long getId() {
         return id;
@@ -31,31 +25,35 @@ public class Roadmap {
         this.id = id;
     }
 
-    public void setRoadmap_topic(String roadmap_topic) {
-        this.roadmap_topic = roadmap_topic;
+    public String getTopic() {
+        return topic;
     }
 
-    public String getRoadmap_subtopic() {
-        return roadmap_subtopic;
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 
-    public void setRoadmap_subtopic(String roadmap_subtopic) {
-        this.roadmap_subtopic = roadmap_subtopic;
+    public String getSub_topic() {
+        return sub_topic;
     }
 
-    public String getRoadmap_description() {
-        return roadmap_description;
+    public void setSub_topic(String sub_topic) {
+        this.sub_topic = sub_topic;
     }
 
-    public void setRoadmap_description(String roadmap_description) {
-        this.roadmap_description = roadmap_description;
+    public String getDescription() {
+        return description;
     }
 
-    public String getRoadmap_youtube() {
-        return roadmap_youtube;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setRoadmap_youtube(String roadmap_youtube) {
-        this.roadmap_youtube = roadmap_youtube;
+    public String getLinks() {
+        return links;
+    }
+
+    public void setLinks(String links) {
+        this.links = links;
     }
 }
