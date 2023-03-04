@@ -31,20 +31,28 @@ public class RoadmapController {
     }
 
 
-//    @PutMapping("/roadmap/{id}")
-//    Roadmap updateRoadmap(@RequestBody Roadmap newRoadmap, @PathVariable Long id){
-//        try{
-//            return roadmapRepository.findById(id)
-//                    .map(roadmap->{
-//                        roadmap.setTopic(newRoadmap.getTopic());
-//                        roadmap.setSub_topic(newRoadmap.getSub_topic());
-//                        roadmap.setDescription(newRoadmap.getDescription());
-//                        roadmap.setLinks(newRoadmap.getLinks());
-//                        return roadmapRepository.save(roadmap);
-//                    }).orElseThrow(() -> new PrintException("Roadmap Update Failed"));
-//
-//        }catch (PrintException e){
-//            throw new RuntimeException(e);
-//        }
-//    };
+    @PutMapping("/roadmap/{id}")
+    Roadmap updateRoadmap(@RequestBody Roadmap newRoadmap, @PathVariable Long id){
+        try{
+            return roadmapRepository.findById(id)
+                    .map(roadmap->{
+                        roadmap.setTopic(newRoadmap.getTopic());
+                        roadmap.setSub_topic(newRoadmap.getSub_topic());
+                        roadmap.setDescription(newRoadmap.getDescription());
+                        roadmap.setLinks(newRoadmap.getLinks());
+                        return roadmapRepository.save(roadmap);
+                    }).orElseThrow(() -> new PrintException("Roadmap Update Failed"));
+
+        }catch (PrintException e){
+            throw new RuntimeException(e);
+        }
+    };
+    @DeleteMapping("/roadmap/{id}")
+    String DeleteRoadmap(@PathVariable Long id) throws PrintException {
+        if(!roadmapRepository.existsById(id)){
+            throw new PrintException("Roadmap not found");
+        }
+        roadmapRepository.deleteById(id);
+        return "Roadmap deleted successfully"+id;
+    }
 }

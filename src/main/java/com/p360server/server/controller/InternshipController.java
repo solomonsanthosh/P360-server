@@ -27,7 +27,7 @@ public class InternshipController {
     Internship newInternship(@RequestBody Internship newInternship){
         return internshipRepository.save(newInternship);
     }
-    @PutMapping("/roadmap/{id}")
+    @PutMapping("/internship/{id}")
     Internship updateInternship(@RequestBody Internship newInternship, @PathVariable Long id){
         try{
             return internshipRepository.findById(id)
@@ -43,5 +43,14 @@ public class InternshipController {
             throw new RuntimeException(e);
         }
     };
+    @DeleteMapping("/internship/{id}")
+    String DeleteInternship(@PathVariable Long id) throws PrintException {
+        if(!internshipRepository.existsById(id)){
+            throw new PrintException("Internship not found");
+        }
+        internshipRepository.deleteById(id);
+        return "Internship deleted successfully"+id;
+    }
+
 
 }
